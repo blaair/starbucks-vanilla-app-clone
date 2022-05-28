@@ -37,3 +37,46 @@ window.addEventListener(
   }, 300)
 );
 // _.throttle(함수, 시간(몇초에 한번씩 실행되는지))
+
+// const fadeEls = document.querySelectorAll('.visual .fade-in');
+// fadeEls.forEach(function(fadeEl, index) {
+//   gsap.to(fadeEl, 1, {
+//     delay: (index + 1) * 0.7, // 몇초뒤에 실행될건지
+//     opacity: 1,
+//   });
+// });
+
+new Swiper('.notice-line .swiper-container', {
+  direction: 'vertical',
+  // autoplay: true,
+  // loop: true,
+});
+new Swiper('.promotion .swiper-container', {
+  slidesPerView: 3, // 한번에 보여줄 슬라이드 개수
+  spaceBetween: 10,
+  centeredSlides: true,
+  loop: true,
+  // autoplay: {
+  //   delay: 5000,
+  // },
+  pagination: {
+    el: '.promotion .swiper-pagination', // 페이지 번호 요소 선택자
+    clickable: true,
+  },
+  navigation: {
+    prevEl: '.promotion .swiper-prev',
+    nextEl: '.promotion .swiper-next',
+  },
+});
+
+const promotionEl = document.querySelector('.promotion');
+const promotionToggleBtn = document.querySelector('.toggle-promotion');
+let isHidePromotion = false;
+promotionToggleBtn.addEventListener('click', function() {
+  isHidePromotion = !isHidePromotion;
+  if (isHidePromotion) {
+    promotionEl.classList.add('hide');
+  } else {
+    promotionEl.classList.remove('hide');
+  }
+});
